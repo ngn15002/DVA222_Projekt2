@@ -1,10 +1,11 @@
 #include "StdAfx.h"
 #include "Graphix.h"
 #include "glut.h"
+#include "ControlBaseExtended"
 
 using namespace std;
 
-class MyButton : public ControlBase
+class MyButton : public ControlBaseExtended
 {
 public:
     //Bitmap objects that hold different images for different states of the Button
