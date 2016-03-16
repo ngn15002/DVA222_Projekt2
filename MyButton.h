@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "Graphix.h"
 #include "glut.h"
-#include "ControlBaseExtended"
+#include "ControlBaseExtended.h"
 
 using namespace std;
 

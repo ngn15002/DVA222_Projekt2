@@ -7,5 +7,6 @@ class Window :
 public:
 	Window();
 	~Window();
+	virtual void Draw();
 };
 
