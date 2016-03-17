@@ -6,5 +6,11 @@ class Container :
 public:
 	Container();
 	~Container();
+	virtual void Draw();
+	virtual void AddControl();
+
+protected:
+	ControlBaseExtended** controls;
+	int controlCount;
 };
 
