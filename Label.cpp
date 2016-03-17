@@ -6,9 +6,15 @@ Label::Label()
 {
 }
 
-Label::Label(int x, int y, int w, int h, int z, std::string string, Color color)
+Label::Label(int x, int y, int w, int h, int z, std::string S, Color C)
 {
-
+	posX = x;
+	posY = y;
+	weight = w;
+	height = h;
+	zOrdering = z;
+	string = S;
+	color = C;
 }
 
 Label::~Label()
