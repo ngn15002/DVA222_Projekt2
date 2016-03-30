@@ -1,11 +1,12 @@
 #pragma once
-#include "Container.h"
-class Panel :
-	public Container
+#include "Panel.h"
+#include "Frame.h"
+class window :
+	public Panel, public Frame
 {
 public:
-	Panel();
-	~Panel();
+	window();
+	~window();
 
 	//Event Handlers
 	virtual void OnLoaded();

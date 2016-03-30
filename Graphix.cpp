@@ -1,4 +1,3 @@
-
 #include "StdAfx.h"
 #include <iostream>
 #include "Graphix.h"
@@ -60,7 +59,7 @@ void FillRectangle(int x, int y, int width, int height )
 
 void DrawString(string text, int x, int y)
 {
-    glRasterPos2i(y,x);
+    glRasterPos2i(x,y);
     for(int i = 0; i < text.length(); i++){ 
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, text.data()[i]);
     }

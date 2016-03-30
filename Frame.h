@@ -1,18 +1,19 @@
 #pragma once
 #include "Container.h"
-#include "Label.h"
-#include "Structs.h"
 class Frame :
 	public Container
 {
 public:
 	Frame();
 	~Frame();
-	virtual void Draw();
-	void SetFrameColor(int R, int G, int B);
 
-protected:
-	Label* label;
-	Color* frameColor;
+	//Event Handlers
+	virtual void OnLoaded();
+	virtual void OnPaint(void);
+	virtual void OnKeyboard(unsigned char key, int x, int y);
+	virtual void OnMouseDown(int button, int x, int y);
+	virtual void OnMouseUp(int button, int x, int y);
+	virtual void OnMouseMove(int button, int x, int y);
+	virtual void OnResize(int width, int height);
 };
 
