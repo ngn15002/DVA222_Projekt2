@@ -37,7 +37,7 @@ CheckBox::CheckBox(int locX, int locY, string text, int z)
 	this->Z = z;
 	Height = 15;
 	Width = 15;
-	buttonLabel = new Label(this->X + this->Width, this->Y + 12, this->Z, "This is a checkbox!", 0, 0, 0);
+	buttonLabel = new Label(this->X + this->Width, this->Y + 12, this->Z, text, 0, 0, 0);
 	hit = pressed = false;
 }
 
@@ -50,7 +50,7 @@ CheckBox::CheckBox(int locX, int locY, int width, int height, int z)
 CheckBox::CheckBox(int locX, int locY, int width, int height, string text, int z)
 	: Button(locX, locY, width, height, z)
 {
-	buttonLabel = new Label(this->X + this->Width, this->Y + 12, this->Z, "This is a checkbox!", 0, 0, 0);
+	buttonLabel = new Label(this->X + this->Width, this->Y + 12, this->Z, text, 0, 0, 0);
 	hit = pressed = false;
 }
 
