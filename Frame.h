@@ -1,18 +1,18 @@
 #pragma once
 #include "Container.h"
 #include "Label.h"
-#include "Structs.h"
-class Frame :
-	public Container
-{
+#include "ColorStruct.h"
+class Frame : public Container {
 public:
 	Frame();
+	Frame(int x, int y, int w, int h, int z);
 	~Frame();
-	virtual void Draw();
+	virtual void OnPaint();
 	void SetFrameColor(int R, int G, int B);
+	void SetFrameLabel(string newString, int R, int G, int B);
 
 protected:
-	Label* label;
-	Color* frameColor;
+	Label* frameLabel;
+	Color frameColor;
 };
 

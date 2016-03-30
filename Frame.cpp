@@ -1,12 +1,35 @@
 #include "stdafx.h"
 #include "Frame.h"
+#include "Graphix.h"
 
 
-Frame::Frame()
-{
+Frame::Frame() {
 }
 
+Frame::Frame(int x, int y, int w, int h, int z ) : Container(x, y, w, h, z) {
+	frameLabel = new Label(x + 4, y + 15, z, "Label", 0, 0, 0);
+	frameColor.r = 0;
+	frameColor.g = 0;
+	frameColor.b = 0;
+}
 
-Frame::~Frame()
-{
+Frame::~Frame() {
+	delete frameLabel;
+}
+
+void Frame::OnPaint() {
+	SetColor(frameColor.r, frameColor.g, frameColor.b);
+	DrawRectangle(X, Y, Width, Height);	
+	frameLabel->OnPaint();
+}
+
+void Frame::SetFrameColor(int R, int G, int B) {
+	frameColor.r = R;
+	frameColor.g = G;
+	frameColor.b = B;
+}
+
+void Frame::SetFrameLabel(string newString, int R, int G, int B) {
+	frameLabel->SetLabelString(newString);
+	frameLabel->SetLabelColor(R, G, B);
 }
