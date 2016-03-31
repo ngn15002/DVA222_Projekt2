@@ -8,6 +8,7 @@ public:
 	Rect banner;
 	bool hit;
 	bool pressed;
+	Point speed;
 	
 	Window();
 	Window(int x, int y, int w, int h, int z);

@@ -34,6 +34,8 @@ void Window::OnPaint(){
 void Window::OnMouseDown(int button, int x, int y){
 	if (hit && button == MOUSE_LEFT) {
 		pressed = true;
+		speed.X = x;
+		speed.Y = y;
 	}
 }
 
@@ -42,14 +44,13 @@ void Window::OnMouseUp(int button, int x, int y){
 }
 
 void Window::OnMouseMove(int button, int x, int y){
-	if (x > X && x < X + Width && y>Y && y < Y + banner.Height){
+	if (x > banner.X && x < banner.X + banner.Width && y > banner.Y && y < banner.Y + banner.Height){
 		hit = true;
-		if(pressed == true){
-			this->X = x;
-			this->Y = y;
-		}
-	} else{
-		pressed = hit = false;
+	}
+	else{pressed = hit=false;}
+	if(pressed && hit == true){
+		this->banner.X += x - speed.X;
+		this->banner.Y += y - speed.Y;
 	}
 }
 
