@@ -1,17 +1,28 @@
 #pragma once
 #include "Frame.h"
-class Group : public Frame {
+#include "Button.h"
+//#include <vector>
+
+class Group :
+	public Frame
+{
 public:
+
+	Frame *groupFrame;
+	int buttonCount;
+	Button **buttonArray;
+//	vector<Button*> buttons;
+
 	Group();
+	Group(int x, int y, int w, int h, int z);
+	Group(int x, int y, int w, int h, int z, int buttonCount);
+
 	~Group();
 
 	//Event Handlers
-	virtual void OnLoaded();
 	virtual void OnPaint(void);
-	virtual void OnKeyboard(unsigned char key, int x, int y);
-	virtual void OnMouseDown(int button, int x, int y);
-	virtual void OnMouseUp(int button, int x, int y);
-	virtual void OnMouseMove(int button, int x, int y);
-	virtual void OnResize(int width, int height);
+
+
+
 };
 

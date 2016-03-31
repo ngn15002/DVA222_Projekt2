@@ -1,23 +1,40 @@
 #pragma once
+#include "Container.h"
+#include "CheckBoxGroup.h"
+#include "RadioButtonGroup.h"
+#include "RadioButton.h"
+#include "CheckBox.h"
 #include "Panel.h"
-#include "Frame.h"
+#include "ImageBox.h"
+#include <vector>
+
 class Window : public Container {
-public:
-	Panel* panel;
-	Frame* frame;
+
+protected:
+	int mouseMovmentX, mouseMovmentY, changeCoords;
+	Point boxCoordsDownCorner, boxCoordsXWidth, boxCoordsYHeight;
+	bool hit, pressed;
+	vector<ControlBaseExtended*> WindowContents;
 	Rect banner;
-	bool hit;
-	bool pressed;
-	Point speed;
-	
+
+public:
 	Window();
 	Window(int x, int y, int w, int h, int z);
 	~Window();
-	virtual void AddControl(ControlBaseExtended* newControl);
-	virtual void OnPaint();
-	virtual void OnMouseDown(int button, int x, int y);
-	virtual void OnMouseUp(int button, int x, int y);
-	virtual void OnMouseMove(int button, int x, int y);
-	virtual void OnResize(int width, int height);
-};
 
+	Panel* panel;
+	Frame* frame;
+
+	void AddCheckBoxGroup(CheckBoxGroup *locCbGroup);
+	void AddRadioButtonGroup(RadioButtonGroup *locRbGroup);
+	void AddRadioButton(RadioButton *locRadio);
+	void AddCheckBox(CheckBox *locCheckBox);
+	void AddPanel(Panel *locPanel);
+	void AddImageBox(ImageBox *locImage);
+	void AddString(Label *locLabel);
+	void OnMouseDown(int button, int locX, int locY);
+	void OnMouseMove(int button, int locX, int locY);
+	void OnMouseUp(int button, int locX, int locY);
+	void OnPaint();
+	void OnLoaded();
+};

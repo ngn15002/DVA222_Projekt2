@@ -3,8 +3,14 @@
 #include "Graphix.h"
 #include "glut.h"
 #include "Button.h"
-class RadioButton :	public Button {
+
+class RadioButton :
+	public Button
+{
 public:
+
+	Label *text;
+
 	bool hit;
 	bool pressed;
 
@@ -15,6 +21,8 @@ public:
 	RadioButton(int locX, int locY, int width, int height, int z, string text);
 
 	~RadioButton();
+
+	void ChangeColor(int r, int g, int b);
 
 	//The class is overriding the following Event Handlres inherited from the base class 
 	virtual void OnMouseMove(int button, int x, int y);

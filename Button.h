@@ -7,7 +7,8 @@
 
 using namespace std;
 
-class Button : public ControlBaseExtended {
+class Button : public ControlBaseExtended
+{
 public:
 	//Bitmap objects that hold different images for different states of the Button
 	//Remember that the images MUST be in 24bit BMP format (use paint if you have images in other format)
@@ -17,7 +18,7 @@ public:
 	Bitmap *hover;
 	Bitmap *press;
 
-	Label* buttonLabel;
+	Label *text;
 
 	bool hit;
 	bool pressed;
@@ -29,7 +30,7 @@ public:
 
 	~Button();
 
-	//The class is overriding the following Event Handlers inherited from the base class 
+	//The class is overriding the following Event Handlres inherited from the base class 
 	virtual void OnMouseMove(int button, int x, int y);
 	virtual void OnPaint();
 	virtual void OnLoaded();

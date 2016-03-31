@@ -4,10 +4,13 @@
 #include "glut.h"
 #include "ControlBaseExtended.h"
 
-class ImageBox : public ControlBaseExtended {
+class ImageBox :
+	public ControlBaseExtended
+{
 public:
 	ImageBox(int locX, int locY, int width, int height, int z);
 	ImageBox();
+
 	~ImageBox();
 
 	//Event Handlers
@@ -15,5 +18,9 @@ public:
 	virtual void OnPaint();
 
 	Bitmap *image;
+
+private:
+
+
 };
 

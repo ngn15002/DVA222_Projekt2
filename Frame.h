@@ -10,8 +10,6 @@ public:
 	virtual void OnPaint();
 	void SetFrameColor(int R, int G, int B);
 	void SetFrameLabel(string newString, int R, int G, int B);
-
-protected:
 	Label* frameLabel;
 	Color frameColor;
 };

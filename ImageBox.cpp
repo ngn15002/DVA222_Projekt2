@@ -18,6 +18,7 @@ ImageBox::ImageBox(int locX, int locY, int width, int height, int z)
 
 ImageBox::~ImageBox()
 {
+	delete image;
 }
 
 void ImageBox::OnLoaded(void)

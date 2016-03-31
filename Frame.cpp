@@ -30,6 +30,11 @@ void Frame::SetFrameColor(int R, int G, int B) {
 }
 
 void Frame::SetFrameLabel(string newString, int R, int G, int B) {
-	frameLabel->SetLabelString(newString);
-	frameLabel->SetLabelColor(R, G, B);
+	Color tmp;
+	tmp.r = R;
+	tmp.g = G;
+	tmp.b = B;
+	
+	frameLabel->SetString(newString);
+	frameLabel->SetLabelColor(tmp);
 }
