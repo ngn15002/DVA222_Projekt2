@@ -50,20 +50,26 @@ void CheckBoxGroup::OnPaint(void)
 
 	for (int i = 0; i < buttonCount; i++)
 	{
+		buttonArray[i]->OnLoaded();
 		buttonArray[i]->OnPaint();
 	}
 }
 
-void CheckBoxGroup::OnMouseUp(int button, int x, int y)
-{
-}
 
 void CheckBoxGroup::OnMouseDown(int button, int x, int y)
 {
+	for (int i = 0; i < buttonCount; i++)
+	{
+		buttonArray[i]->OnMouseDown(button, x, y);
+	}
 }
 
 void CheckBoxGroup::OnMouseMove(int button, int x, int y)
 {
+	for (int i = 0; i < buttonCount; i++)
+	{
+		buttonArray[i]->OnMouseMove(button, x, y);
+	}
 }
 
 

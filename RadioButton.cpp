@@ -12,7 +12,7 @@ RadioButton::RadioButton()
 	this->Z = 1;
 	Width = 20;
 	Height = 20;
-	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a checkbox!", 0, 0, 0);
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a radiobutton!", 0, 0, 0);
 
 	hit = pressed = false;
 }
@@ -24,7 +24,7 @@ RadioButton::RadioButton(int locX, int locY , int z)
 	this->Z = z;
 	Height = 20;
 	Width = 20;
-	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a checkbox!", 0, 0, 0);
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a radiobutton!", 0, 0, 0);
 
 	hit = pressed = false;
 }
@@ -45,7 +45,7 @@ RadioButton::RadioButton(int locX, int locY, int z, string text)
 RadioButton::RadioButton(int locX, int locY, int width, int height, int z)
 	: Button(locX, locY, width, height, z)
 {
-	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a checkbox!", 0, 0, 0);
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a radiobutton!", 0, 0, 0);
 	hit = pressed = false;
 }
 

@@ -44,6 +44,7 @@ int _tmain(int argc, char** argv)
 	ControlBase* group = new Group(20, 20, 200, 100, 1);
 
 	ControlBase* group2 = new CheckBoxGroup(20, 20, 200, 100, 1);
+	ControlBase* group3 = new RadioButtonGroup(20, 20, 200, 100, 1);
 
 
 	Window* window = new Window(10, 10, 500, 300, 1);
@@ -53,7 +54,7 @@ int _tmain(int argc, char** argv)
 	window->frame->SetFrameLabel("Window", 0, 0, 0);
 	button4->ChangeColor(255, 0, 0);
 
-	InitOGL(argc, argv, group2);
+	InitOGL(argc, argv, group3);
 
     delete button;
 	return 0;
