@@ -10,14 +10,15 @@ ImageBox::ImageBox()
 	Height = 100;
 }
 
-ImageBox::ImageBox(int locX, int locY, int width, int height)
-	:ControlBaseExtended(locX, locY, width, height)
+ImageBox::ImageBox(int locX, int locY, int width, int height, int z)
+	:ControlBaseExtended(locX, locY, width, height, z)
 {
 }
 
 
 ImageBox::~ImageBox()
 {
+	delete image;
 }
 
 void ImageBox::OnLoaded(void)

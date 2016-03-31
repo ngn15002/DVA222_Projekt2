@@ -18,13 +18,13 @@ public:
 	Bitmap *hover;
 	Bitmap *press;
 
-	string text;
+	Label *text;
 
 	bool hit;
 	bool pressed;
 
 	Button();
-	Button(int locX, int locY, int width, int height);
+	Button(int locX, int locY, int width, int height, int z);
 	Button(int locX, int locY, int width, int height, int z, string text);
 
 

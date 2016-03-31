@@ -2,43 +2,16 @@
 #include "Container.h"
 
 
-Container::Container()
-{
+Container::Container() {
 }
 
-
-Container::~Container()
-{
+Container::Container(int x, int y, int w, int h, int z) : ControlBaseExtended(x, y, w, h, z) {
 }
 
-void Container::OnLoaded(void)
-{
-
+Container::~Container() {
 }
 
-void Container::OnPaint(void)
-{
-
-}
-
-
-void Container::OnKeyboard(unsigned char key, int x, int y)
-{
-}
-
-void Container::OnMouseUp(int button, int x, int y)
-{
-}
-
-void Container::OnMouseDown(int button, int x, int y)
-{
-}
-
-void Container::OnMouseMove(int button, int x, int y)
-{
-}
-
-void Container::OnResize(int width, int height)
-{
+void Container::AddControl(ControlBaseExtended* control) {
+	controls.push_back(control);
 }
 

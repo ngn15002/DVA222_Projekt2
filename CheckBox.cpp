@@ -14,41 +14,48 @@ CheckBox::CheckBox()
 	Y = 10;
 	Width = 15;
 	Height = 15;
-	text = "This is a checkbox!";
+	this->text = new Label(this->X + this->Width, this->Y + 12, this->Z, "This is a checkbox!", 0, 0, 0);
+
 	hit = pressed = false;
 }
 
-CheckBox::CheckBox(int locX, int locY)
+CheckBox::CheckBox(int locX, int locY, int z)
 {
 	this->X = locX;
 	this->Y = locY;
+	this->Z = z;
 	Height = 15;
 	Width = 15;
-	text = "This is a checkbox!";
+	this->text = new Label(this->X + this->Width, this->Y + 12, this->Z, "This is a checkbox!", 0, 0, 0);
+
 	hit = pressed = false;
 }
 
-CheckBox::CheckBox(int locX, int locY, string text)
+CheckBox::CheckBox(int locX, int locY, int z, string text)
 {
 	this->X = locX;
 	this->Y = locY;
+	this->Z = z;
 	Height = 15;
 	Width = 15;
-	this->text = text;
+	this->text = new Label(this->X + this->Width, this->Y + 12, this->Z, text, 0, 0, 0);
+
 	hit = pressed = false;
 }
 
-CheckBox::CheckBox(int locX, int locY, int width, int height)
-	: Button(locX, locY, width, height)
+CheckBox::CheckBox(int locX, int locY, int width, int height, int z)
+	: Button(locX, locY, width, height, z)
 {
 	hit = pressed = false;
+	this->text = new Label(this->X + this->Width, this->Y + 12, this->Z, "This is a checkbox!", 0, 0, 0);
 }
 
-CheckBox::CheckBox(int locX, int locY, int width, int height, string text)
-	: Button(locX, locY, width, height)
+CheckBox::CheckBox(int locX, int locY, int width, int height, int z, string text)
+	: Button(locX, locY, width, height, z)
 {
-	this->text = text;
 	hit = pressed = false;
+	this->text = new Label(this->X + this->Width, this->Y + 12, this->Z, text, 0, 0, 0);
+
 }
 
 CheckBox::~CheckBox()
@@ -56,6 +63,16 @@ CheckBox::~CheckBox()
 	delete normal;
 	delete hover;
 	delete press;
+}
+
+void CheckBox::ChangeColor(int r, int g, int b)
+{
+	Color tempColor;
+	tempColor.r = r;
+	tempColor.g = g;
+	tempColor.b = b;
+
+	text->SetColour(tempColor);
 }
 
 //This is called whenever the user moves the mouse around
@@ -84,8 +101,7 @@ void CheckBox::OnPaint()
 	{
 		DrawBitmap(*normal, X, Y, Width, Height);
 	}
-	SetColor(0, 0, 0);
-	DrawString(text, X + 20, Y+11);
+	text->OnPaint();
 }
 //Is called once, when the object is being loaded
 void CheckBox::OnLoaded()

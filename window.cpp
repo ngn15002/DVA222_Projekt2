@@ -1,44 +1,77 @@
 #include "stdafx.h"
-#include "window.h"
+#include "Window.h"
 
 
-window::window()
+Window::Window()
 {
 }
 
-
-window::~window()
+Window::Window(int x, int y, int w, int h, int z) :Container(x, y, w, h, z)
 {
+	panel = new Panel(x, y, w, h, z);
+	frame = new Frame(x, y, w, h, z);
+	banner = _rectangle(x, y, w, 20);
 }
 
-void window::OnLoaded(void)
+Window::~Window(){
+	delete panel;
+	delete frame;
+}
+
+void Window::AddControl(ControlBaseExtended* newControl)
 {
+	controls.push_back(newControl);
+}
+
+void Window::OnPaint(){
+	panel->OnPaint();
+	SetColor(0, 0, 255);
+	FillRectangle(banner.X, banner.Y, banner.Width, banner.Height);
+	frame->OnPaint();
+
+	for (int i = 0; i < controls.size(); i++){
+		controls[i]->OnPaint();
+	}
+}
+
+void Window::OnMouseDown(int button, int x, int y)
+{
+	
+	if (!pressed)
+	{
+		if (hit && button == MOUSE_LEFT)
+		{
+			pressed = true;
+			speed.X = x;
+			speed.Y = y;
+		}
+	}
 
 }
 
-void window::OnPaint(void)
+void Window::OnMouseUp(int button, int x, int y)
 {
+	pressed = false;
+}
+
+void Window::OnMouseMove(int button, int x, int y)
+{
+	if (x > banner.X && x < banner.X + banner.Width && y > banner.Y && y < banner.Y + banner.Height){
+		hit = true;
+	}
+	else
+	{
+		pressed = hit = false; 
+	}
+
+	if (pressed)
+	{
+		this->banner.X += x - speed.X;
+		this->banner.Y += y - speed.Y;
+	}
 
 }
 
-
-void window::OnKeyboard(unsigned char key, int x, int y)
+void Window::OnResize(int width, int height)
 {
 }
-
-void window::OnMouseUp(int button, int x, int y)
-{
-}
-
-void window::OnMouseDown(int button, int x, int y)
-{
-}
-
-void window::OnMouseMove(int button, int x, int y)
-{
-}
-
-void window::OnResize(int width, int height)
-{
-}
-

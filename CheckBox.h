@@ -9,16 +9,20 @@ public:
 	//Also remember that the image with MUST be dividable by 4
 	//Also remember that the images must be stored in the same location as your source files
 
+	Label *text;
+
 	bool hit;
 	bool pressed;
 
 	CheckBox();
-	CheckBox(int locX, int locY);
-	CheckBox(int locX, int locY, string text);
-	CheckBox(int locX, int locY, int width, int height); 
-	CheckBox(int locX, int locY, int width, int height, string text);
+	CheckBox(int locX, int locY, int z);
+	CheckBox(int locX, int locY, int z, string text);
+	CheckBox(int locX, int locY, int width, int height, int z); 
+	CheckBox(int locX, int locY, int width, int height, int z, string text);
 
 	~CheckBox();
+
+	void ChangeColor(int r, int g, int b);
 
 	//The class is overriding the following Event Handlres inherited from the base class 
 	virtual void OnMouseMove(int button, int x, int y);

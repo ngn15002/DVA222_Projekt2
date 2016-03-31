@@ -15,15 +15,17 @@ Button::Button()
 	Y = 100;
 	Width = 100;
 	Height = 100;
-	this->text = "Default string";
+
+	this->text = new Label(X + ((Width - (6 * strlen("Default string"))) / 2), (Y + Height - (Height - 12) / 2), (Z + 1), "Default string", 0, 0, 0);
 
 }
 
-Button::Button(int locX, int locY, int width, int height)
-	: ControlBaseExtended(locX, locY, width, height)
+Button::Button(int locX, int locY, int width, int height, int z)
+	: ControlBaseExtended(locX, locY, width, height, z)
 {
 	hit = pressed = false;
-	this->text = "Default string";
+
+	this->text = new Label(X + ((Width - (6 * strlen("Default string"))) / 2), (Y + Height - (Height - 12) / 2), (z + 1), "Default string", 0, 0, 0);
 
 }
 
@@ -31,7 +33,8 @@ Button::Button(int locX, int locY, int width, int height, int z, string text)
 	: ControlBaseExtended(locX, locY, width, height, z)
 {
 	hit = pressed = false;
-	this->text = text;
+	this->text = new Label(X + ((Width - (6 * strlen("Default string"))) / 2), (Y + Height - (Height - 12) / 2), (z + 1), text, 0, 0, 0);
+
 }
 
 
@@ -60,18 +63,17 @@ void Button::OnPaint()
 	if (pressed)
 	{
 		DrawBitmap(*press, X, Y, Width, Height);
-		DrawString(text, X + 20, (Y + (Height - 10) / 2) + 10);
 	}
 	else if (hit)
 	{
 		DrawBitmap(*hover, X, Y, Width, Height);
-		DrawString(text, X + 20, (Y + (Height - 10) / 2) + 10);
 	}
 	else
 	{
 		DrawBitmap(*normal, X, Y, Width, Height);
-		DrawString(text, X + 20, (Y + (Height - 10) / 2) + 10);
 	}
+
+	text->OnPaint();
 }
 
 //Is called once, when the object is being loaded

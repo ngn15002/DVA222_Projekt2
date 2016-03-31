@@ -8,7 +8,7 @@ class ImageBox :
 	public ControlBaseExtended
 {
 public:
-	ImageBox(int locX, int locY, int width, int height);
+	ImageBox(int locX, int locY, int width, int height, int z);
 	ImageBox();
 
 	~ImageBox();

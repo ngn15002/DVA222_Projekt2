@@ -1,20 +1,24 @@
 #pragma once
 #include "Panel.h"
 #include "Frame.h"
-class window :
-	public Panel, public Frame
-{
+#include "Graphix.h"
+#include "glut.h"
+class Window : public Container {
 public:
-	window();
-	~window();
+	Panel* panel;
+	Frame* frame;
+	Rect banner;
+	bool hit;
+	bool pressed;
+	Point speed;
 
-	//Event Handlers
-	virtual void OnLoaded();
-	virtual void OnPaint(void);
-	virtual void OnKeyboard(unsigned char key, int x, int y);
+	Window();
+	Window(int x, int y, int w, int h, int z);
+	~Window();
+	virtual void AddControl(ControlBaseExtended* newControl);
+	virtual void OnPaint();
 	virtual void OnMouseDown(int button, int x, int y);
 	virtual void OnMouseUp(int button, int x, int y);
 	virtual void OnMouseMove(int button, int x, int y);
 	virtual void OnResize(int width, int height);
 };
-

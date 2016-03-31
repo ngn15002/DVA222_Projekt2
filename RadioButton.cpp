@@ -9,43 +9,51 @@ RadioButton::RadioButton()
 {
 	X = 10;
 	Y = 10;
+	this->Z = 1;
 	Width = 20;
 	Height = 20;
-	text = "This is a radiobutton!";
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a checkbox!", 0, 0, 0);
+
 	hit = pressed = false;
 }
 
-RadioButton::RadioButton(int locX, int locY)
+RadioButton::RadioButton(int locX, int locY , int z)
 {
 	this->X = locX;
 	this->Y = locY;
+	this->Z = z;
 	Height = 20;
 	Width = 20;
-	text = "This is a radiobutton!";
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a checkbox!", 0, 0, 0);
+
 	hit = pressed = false;
 }
 
-RadioButton::RadioButton(int locX, int locY, string text)
+RadioButton::RadioButton(int locX, int locY, int z, string text)
 {
 	this->X = locX;
 	this->Y = locY;
+	this->Z = z;
+
 	Height = 20;
 	Width = 20;
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, text, 0, 0, 0);
 
-	this->text = text;
 	hit = pressed = false;
 }
 
-RadioButton::RadioButton(int locX, int locY, int width, int height)
-	: Button(locX, locY, width, height)
+RadioButton::RadioButton(int locX, int locY, int width, int height, int z)
+	: Button(locX, locY, width, height, z)
 {
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, "This is a checkbox!", 0, 0, 0);
 	hit = pressed = false;
 }
 
-RadioButton::RadioButton(int locX, int locY, int width, int height, string text)
-	: Button(locX, locY, width, height)
+RadioButton::RadioButton(int locX, int locY, int width, int height, int z, string text)
+	: Button(locX, locY, width, height, z)
 {
-	this->text = text;
+	this->text = new Label(this->X + this->Width, this->Y + 13, this->Z, text, 0, 0, 0);
+
 	hit = pressed = false;
 }
 
@@ -54,6 +62,16 @@ RadioButton::~RadioButton()
 	delete normal;
 	delete hover;
 	delete press;
+}
+
+void RadioButton::ChangeColor(int r, int g, int b)
+{
+	Color tempColor;
+	tempColor.r = r;
+	tempColor.g = g;
+	tempColor.b = b;
+
+	text->SetColour(tempColor);
 }
 
 //This is called whenever the user moves the mouse around
@@ -82,8 +100,7 @@ void RadioButton::OnPaint()
 	{
 		DrawBitmap(*normal, X, Y, Width, Height);
 	}
-	SetColor(0, 0, 0);
-	DrawString(text, X + 20, Y + 15);
+	text->OnPaint();
 }
 
 //Is called once, when the object is being loaded
