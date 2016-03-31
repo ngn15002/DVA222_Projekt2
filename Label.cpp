@@ -1,42 +1,123 @@
 #include "stdafx.h"
 #include "Label.h"
+#include "Graphix.h"
 
 
 Label::Label()
 {
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+
+	X = 100;
+	Y = 100;
+
+	this->text = "Default string";
 }
 
-Label::Label(int x, int y, int w, int h, int z, std::string S, Color C)
+Label::Label(int x, int y)
 {
-	posX = x;
-	posY = y;
-	weight = w;
-	height = h;
-	zOrdering = z;
-	string = S;
-	color = C;
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+
+	X = x;
+	Y = y;
+
+	this->text = "Default string";
 }
+
+Label::Label(int x, int y, string text)
+{
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+
+	X = x;
+	Y = y;
+
+	this->text = text;
+}
+
+Label::Label(int x, int y, int w, int h, int z)
+	: ControlBaseExtended(x, y, w, h, z)
+{
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+
+	this->text = "Default string";
+}
+
+Label::Label(int x, int y, int w, int h, int z, string text)
+	: ControlBaseExtended(x, y, w, h, z)
+{
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+
+	this->text = text;
+
+}
+
+Label::Label(int x, int y, int w, int h, int z, string text, Color color)
+	: ControlBaseExtended(x, y, w, h, z)
+{
+	this->color.r = color.r;
+	this->color.g = color.g;
+	this->color.b = color.b;
+
+	this->text = text;
+
+}
+
+Label::Label(int x, int y, int z, string text, int r, int g, int b)
+{
+	this->X = x;
+	this->Y = y;
+	this->Z = z;
+	this->text = text;
+	color.r = r;
+	color.g = g;
+	color.b = b;
+}
+
 
 Label::~Label()
 {
 }
 
-void Label::SetColor(Color color)
+void Label::OnPaint()
 {
-	glColor3f(color.r, color.g, color.b);
+	SetColor(color.r, color.g, color.b);
+	DrawString(this->text, this->X, this->Y);
 }
 
-Color Label::GetColor()
+void Label::ChangeLocY(int addToY)
+{
+	this->Y += addToY;
+}
+
+void Label::SetColour(Color color)
+{
+//	this->color.r = color.r;
+//	this->color.g = color.g;
+//	this->color.b = color.b;
+
+	this->color = color;
+}
+
+Color Label::GetColour()
 {
 	return this->color;
 }
 
-void Label::SetString(std::string S)
+void Label::SetString(string text)
 {
-	string = S;
+	this->text = text;
 }
 
 string Label::GetString()
 {
-	return string;
+	return text;
 }
