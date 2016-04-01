@@ -20,12 +20,11 @@ public:
 	virtual void OnPaint();
 
 	void ChangeLocY(int addToY);
-	void SetColour(Color color);
-	Color GetColour();
+	void SetLabelColor(Color color);
+	Color GetColor();
 	void SetString(string text);
 	string GetString();
 
-private:
 	string text;
 	Color color;
 };

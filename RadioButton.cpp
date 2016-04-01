@@ -71,7 +71,7 @@ void RadioButton::ChangeColor(int r, int g, int b)
 	tempColor.g = g;
 	tempColor.b = b;
 
-	text->SetColour(tempColor);
+	text->SetLabelColor(tempColor);
 }
 
 //This is called whenever the user moves the mouse around
@@ -129,4 +129,13 @@ void RadioButton::OnMouseDown(int button, int x, int y)
 			pressed = false;
 		}
 	}
+}
+
+void RadioButton::SetX(int x) {
+	ControlBaseExtended::SetX(x);
+	text->SetX(this->X + this->Width);
+}
+void RadioButton::SetY(int y) {
+	ControlBaseExtended::SetY(y);
+	text->SetY(this->Y + 13);
 }

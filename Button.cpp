@@ -33,7 +33,7 @@ Button::Button(int locX, int locY, int width, int height, int z, string text)
 	: ControlBaseExtended(locX, locY, width, height, z)
 {
 	hit = pressed = false;
-	this->text = new Label(X + ((Width - (6 * strlen("Default string"))) / 2), (Y + Height - (Height - 12) / 2), (z + 1), text, 0, 0, 0);
+	this->text = new Label(X + ((Width - (6 * text.length())) / 2), (Y + Height - (Height - 12) / 2), (z + 1), text, 0, 0, 0);
 
 }
 
@@ -99,4 +99,14 @@ void Button::OnMouseDown(int button, int x, int y)
 void Button::OnMouseUp(int button, int x, int y)
 {
 	pressed = false;
+}
+
+void Button::SetX(int x) {
+	ControlBaseExtended::SetX(x);
+	text->SetX(this->GetX() + ((this->Width - (6 * text->text.length())) / 2));
+}
+
+void Button::SetY(int y) {
+	ControlBaseExtended::SetY(y);
+	text->SetY(this->GetY() + this->Height - ((Height - 12) / 2));
 }

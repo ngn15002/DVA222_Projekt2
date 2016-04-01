@@ -72,7 +72,7 @@ void CheckBox::ChangeColor(int r, int g, int b)
 	tempColor.g = g;
 	tempColor.b = b;
 
-	text->SetColour(tempColor);
+	text->SetLabelColor(tempColor);
 }
 
 //This is called whenever the user moves the mouse around
@@ -131,3 +131,11 @@ void CheckBox::OnMouseDown(int button, int x, int y)
 	}
 }
 
+void CheckBox::SetX(int x) {
+	ControlBaseExtended::SetX(x);
+	text->SetX(this->X + this->Width);
+}
+void CheckBox::SetY(int y) {
+	ControlBaseExtended::SetY(y);
+	text->SetY(this->Y + 13);
+}

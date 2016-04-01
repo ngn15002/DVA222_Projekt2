@@ -28,6 +28,8 @@ public:
 	virtual void OnMouseMove(int button, int x, int y);
 	virtual void OnPaint();
 	virtual void OnLoaded();
-	void OnMouseDown(int button, int x, int y);
+	virtual void SetX(int x);
+	virtual void SetY(int y);
+	virtual void OnMouseDown(int button, int x, int y);
 };
 

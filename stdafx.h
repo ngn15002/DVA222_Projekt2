@@ -20,6 +20,8 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include "Graphix.h"
+#include "ControlBaseExtended.h"
 
 
 

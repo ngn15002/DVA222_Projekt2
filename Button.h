@@ -36,5 +36,7 @@ public:
 	virtual void OnLoaded();
 	void OnMouseDown(int button, int x, int y);
 	void OnMouseUp(int button, int x, int y);
+	virtual void SetX(int x);
+	virtual void SetY(int y);
 };
 

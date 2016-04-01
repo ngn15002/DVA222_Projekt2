@@ -1,7 +1,6 @@
 #pragma once
 
-typedef struct color
-{
+typedef struct _color{
 	int r;
 	int g;
 	int b;
