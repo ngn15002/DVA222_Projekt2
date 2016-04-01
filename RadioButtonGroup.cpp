@@ -47,18 +47,31 @@ RadioButtonGroup::~RadioButtonGroup()
 
 void RadioButtonGroup::OnPaint(void)
 {
+	Group::OnPaint();
 
+	for (int i = 0; i < buttonCount; i++)
+	{
+		buttonArray[i]->OnLoaded();
+		buttonArray[i]->OnPaint();
+	}
 }
 
-void RadioButtonGroup::OnMouseUp(int button, int x, int y)
-{
-}
+
 
 void RadioButtonGroup::OnMouseDown(int button, int x, int y)
 {
+	for (int i = 0; i < buttonCount; i++)
+	{
+		buttonArray[i]->OnMouseDown(button, x, y);
+	}
+
 }
 
 void RadioButtonGroup::OnMouseMove(int button, int x, int y)
 {
+	for (int i = 0; i < buttonCount; i++)
+	{
+		buttonArray[i]->OnMouseMove(button, x, y);
+	}
 }
 
